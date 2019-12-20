@@ -1,0 +1,92 @@
+<!-- paso 5 ion- menu hay que agregarlo -->
+<ion-menu side="start" menuId="first">
+    <ion-header>
+      <ion-toolbar translucent>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+          <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+            <ion-icon slot="start" [name]="p.icon"></ion-icon>
+            <ion-label>
+              {{ p.title }}
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  
+  <!-- paso 6 agregar div y meter el header y el content -->
+  <div class="ion-page" main>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+          Solicitudes
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <!--------------------------- Tecnico -------------------------------------->
+    <ion-content>
+      <ion-searchbar
+        (ionChange)="buscar($event)"
+        showCancelButton="focus"
+        *ngIf="userTecnico === 'found'"
+      ></ion-searchbar>
+  
+      <ion-list lines="none" *ngIf="userTecnico === 'found'">
+        <ion-list-header> </ion-list-header>
+        <ion-card *ngFor="let prueba of historicos | filtro: busqueda">
+          <ion-card-content>
+            <ion-item lines="none">
+              <ion-text>Cliente: {{ prueba.historicoid }} </ion-text>
+              <!-- 
+                Estados: 
+                  0: Nuevo Blanco
+                  1: Ready to aprove
+                  2: Contratado azul
+                  3: Denegado rojo
+                  4: en proceso anaranjado
+                  5: Finalizado verde
+
+                  [routerLink]="['../projects/solicitudDetalle', tenicoId]"
+               -->
+              <ion-chip slot="end" outline (click)= 'verSolicitudDetalle(prueba.historicoid)'>
+                <ion-label>Ver Solicitud</ion-label>
+              </ion-chip>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-text>Estado: {{ prueba.estado }} </ion-text>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </ion-list>
+  
+      <!--------------------------- Cliente -------------------------------------->
+      <ion-searchbar
+        (ionChange)="buscar($event)"
+        showCancelButton="focus"
+        *ngIf="userCliente === 'found'"
+      ></ion-searchbar>
+      <ion-list lines="none" *ngIf="userCliente === 'found'">
+        <ion-list-header> </ion-list-header>
+        <ion-card *ngFor="let prueba of historicos | filtro: busqueda">
+          <ion-card-content>
+            <ion-item lines="none">
+              <ion-text>Tecnico: {{ prueba.historicoid }} </ion-text>
+              <ion-chip slot="end" outline (click)='verSolicitudDetalle(prueba.historicoid)'>
+                <ion-label>Ver Solicitud</ion-label>
+              </ion-chip>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </ion-list>
+    </ion-content>
+  </div>
+  

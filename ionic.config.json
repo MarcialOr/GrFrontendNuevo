@@ -1,0 +1,7 @@
+{
+  "name": "grfrontend",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

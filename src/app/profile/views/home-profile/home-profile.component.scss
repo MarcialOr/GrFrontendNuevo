@@ -1,0 +1,13 @@
+.cardProfile {
+    --background: url(../../../../assets/img/fondoCardProfile.jpg);
+}
+
+.cardProfile > ion-card-header > ion-item {
+    --background: rgba(0,0,0,0);
+    --color: #fff;
+}
+
+.ionItem {
+    --background: rgba(0,0,0,0);
+    --color: #fff;
+}

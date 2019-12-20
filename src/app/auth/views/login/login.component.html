@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Inicie sesion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item class="inputs" lines="none">
+    <ion-label position="stacked">Correo:</ion-label>
+    <div>
+      <ion-input type="text"  [(ngModel)]="correo"
+      [ngModelOptions]="{standalone: true}"></ion-input>
+    </div>
+  </ion-item>
+  <ion-item class="inputs" lines="none">
+    <ion-label position="stacked">Contraseña:</ion-label>
+    <div>
+      <ion-input [type]="passwordTypeInput"  [(ngModel)]="clave"
+      [ngModelOptions]="{standalone: true}"></ion-input>
+      
+      <button item-end class="btn_eye_icon" (click)="togglePasswordMode()">
+        <ion-icon [name]="iconpassword"></ion-icon>
+      </button>
+    </div>
+  </ion-item>
+
+  <ion-list>
+    <ion-radio-group ngDefaultControl>
+      <ion-list-header>
+        <ion-label>Inicia Sesion Como:</ion-label>
+      </ion-list-header>
+      <ion-item lines="none">
+          <ion-label>Contratista</ion-label>
+          <ion-radio slot="start" value="contratist" checked (ionSelect)="setTypeLogin('contratist')"></ion-radio>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Trabajador</ion-label>
+        <ion-radio slot="start" value="worker" (ionSelect)="setTypeLogin('worker')"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+
+  <ion-button class="Contratar" (click)="login()">Iniciar Sesion</ion-button>
+  <ion-button class="Contratar" (click)="irRegister()">Registrarse</ion-button>
+</ion-content>

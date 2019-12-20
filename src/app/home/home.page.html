@@ -1,0 +1,94 @@
+<!-- paso 5 ion- menu hay que agregarlo -->
+<ion-menu side="start" menuId="first">
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+        <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+          <ion-icon slot="start" [name]="p.icon"></ion-icon>
+          <ion-label>
+            {{p.title}}
+          </ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!-- paso 6 agregar div y meter el header y el content -->
+<div class="ion-page" main>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Home
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-card
+      class="welcome-card"
+      *ngIf="userTecnico === 'found'"
+      [routerLink]="['/search-proyect']"
+    >
+      <img class="imgNoProfile" src="../../assets/img/computing.jpg" alt="" />
+      <ion-card-header>
+        <!-- <ion-card-subtitle>Get Started</ion-card-subtitle>
+          <ion-card-title>Welcome to GRApp</ion-card-title> -->
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button expand="block" color="primary"
+          >Projects in progress: 2</ion-button
+        >
+      </ion-card-content>
+    </ion-card>
+
+    <ion-searchbar
+      (ionChange)="buscar($event)"
+      showCancelButton="focus"
+      *ngIf="userCliente === 'found'"
+    ></ion-searchbar>
+    <ion-list lines="none" *ngIf="userCliente === 'found'">
+      <ion-list-header> </ion-list-header>
+      <ion-card *ngFor="let tecnico of tecnicos | filtro: busqueda">
+        <ion-card-content>
+          <ion-item lines="none">
+            <ion-text>{{tecnico.nombre}} </ion-text>
+            <ion-chip
+              slot="end"
+              outline
+              (click)="detalleTecnico(tecnico.tecnicoid)"
+            >
+              <ion-label>Mas detalle</ion-label>
+            </ion-chip>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-icon name="star"></ion-icon>
+            <ion-icon name="star"></ion-icon>
+            <ion-icon name="star"></ion-icon>
+            <ion-icon name="star-half"></ion-icon>
+            <ion-icon name="star-outline"></ion-icon>
+          </ion-item>
+          <ion-item lines="none">
+            <p>
+              <strong>Presupuesto: </strong>{{tecnico.presupuesto | currency: 'L
+              '}} /Hora
+            </p>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-text><strong>Categoria: </strong></ion-text>
+            <ion-text class="service">{{tecnico.categoria}}</ion-text>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </ion-content>
+</div>

@@ -1,0 +1,156 @@
+<!-- paso 5 ion- menu hay que agregarlo -->
+<ion-menu side="start" menuId="first">
+    <ion-header>
+      <ion-toolbar translucent>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle auto-hide="true" *ngFor="let p of appPages">
+          <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+            <ion-icon slot="start" [name]="p.icon"></ion-icon>
+            <ion-label>
+              {{p.title}}
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+
+  <!-- paso 6 agregar div y meter el header y el content -->
+<div class="ion-page" main> 
+    <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-title>Perfil</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      
+      <ion-content padding>
+        <div *ngIf="userTecnico === 'found'">
+          <ion-card class="cardProfile">
+            <ion-card-header>
+              <ion-item lines="none" no-padding>
+                <ion-avatar slot="start">
+                  <img src="../../../../assets/img/profile.png" />
+                </ion-avatar>
+                <ion-label>{{tecnicos.nombre}}</ion-label>
+              </ion-item>
+              <ion-item lines="none">
+                <ion-icon name="star" color="light"></ion-icon>
+                <ion-icon name="star" color="light"></ion-icon>
+                <ion-icon name="star" color="light"></ion-icon>
+                <ion-icon name="star" color="light"></ion-icon>
+                <ion-icon name="star-outline" color="light"></ion-icon>
+              </ion-item>
+              <ion-item lines="none">
+                <ion-label>Proyectos Pagados: 0</ion-label>
+              </ion-item>
+            </ion-card-header>
+          </ion-card>
+          <ion-card class="cardProfile">
+            <ion-card-content>
+              <ion-item class="ionItem" lines="none" no-padding>
+                <ion-icon
+                  name="create"
+                  size="large"
+                  slot="end"
+                  color="light"
+                  (click)= "presentAlertTecnic('Editar Sobre mi', 'AboutMe')"
+                ></ion-icon>
+                <ion-label>
+                  <h3>Sobre mi</h3>
+                  <h3>{{tecnicos.sobremi}}</h3>
+                </ion-label>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+          <ion-card class="cardProfile">
+            <ion-card-content>
+              <ion-item class="ionItem" lines="none" no-padding>
+                <ion-icon name="create" size="large" slot="end" color="light" (click)="presentAlertTecnic('Editar Direccion', 'address')"></ion-icon>
+                <ion-label>
+                  <h3>Dirección</h3>
+                  <h3>{{tecnicos.direccion}}</h3>
+                </ion-label>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+          <ion-card class="cardProfile">
+            <ion-card-content>
+              <ion-item class="ionItem" lines="none" no-padding>
+                <ion-icon
+                  name="create"
+                  size="large"
+                  slot="end"
+                  color="light"
+                  (click)= "presentAlertTecnic('Editar Presupuesto', 'budget')"
+                ></ion-icon>
+                <ion-label>
+                  <h3>Presupuesto</h3>
+                  <h3>{{tecnicos.presupuesto | currency: 'L '}}</h3>
+                </ion-label>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      
+        <div *ngIf="userCliente === 'found'">
+            <ion-card class="cardProfile">
+              <ion-card-header>
+                <ion-item lines="none" no-padding>
+                  <ion-avatar slot="start">
+                    <img src="../../../../assets/img/profile.png" />
+                  </ion-avatar>
+                  <ion-label>{{cliente.nombre}}</ion-label>
+                </ion-item>
+                <ion-item lines="none">
+                  <ion-icon name="star" color="light"></ion-icon>
+                  <ion-icon name="star" color="light"></ion-icon>
+                  <ion-icon name="star" color="light"></ion-icon>
+                  <ion-icon name="star" color="light"></ion-icon>
+                  <ion-icon name="star-outline" color="light"></ion-icon>
+                </ion-item>
+                <ion-item lines="none">
+                  <ion-label>Proyectos Pagados: 0</ion-label>
+                </ion-item>
+              </ion-card-header>
+            </ion-card>
+            <ion-card class="cardProfile">
+              <ion-card-content>
+                <ion-item class="ionItem" lines="none" no-padding>
+                  <ion-icon
+                    name="create"
+                    size="large"
+                    slot="end"
+                    color="light"
+                    (click)= "presentAlertTecnic('Editar Sobre mi', 'AboutMe')"
+                  ></ion-icon>
+                  <ion-label>
+                    <h3>Sobre mi</h3>
+                    <h3>{{cliente.sobremi}}</h3>
+                  </ion-label>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+            <ion-card class="cardProfile">
+              <ion-card-content>
+                <ion-item class="ionItem" lines="none" no-padding>
+                  <ion-icon name="create" size="large" slot="end" color="light" (click)="presentAlertTecnic('Editar Direccion', 'address')"></ion-icon>
+                  <ion-label>
+                    <h3>Dirección</h3>
+                    <h3>{{cliente.direccion}}</h3>
+                  </ion-label>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </div>
+      </ion-content>
+</div>
+

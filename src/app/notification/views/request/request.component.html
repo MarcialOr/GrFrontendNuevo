@@ -1,0 +1,77 @@
+<!-- paso 5 ion- menu hay que agregarlo -->
+<ion-menu side="start" menuId="first">
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+        <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+          <ion-icon slot="start" [name]="p.icon"></ion-icon>
+          <ion-label>
+            {{ p.title }}
+          </ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!-- paso 6 agregar div y meter el header y el content -->
+<div class="ion-page" main>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Mensajes
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <!--------------------------- Tecnico -------------------------------------->
+  <ion-content>
+    <ion-searchbar
+      (ionChange)="buscar($event)"
+      showCancelButton="focus"
+      *ngIf="userTecnico === 'found'"
+    ></ion-searchbar>
+
+    <ion-list lines="none" *ngIf="userTecnico === 'found'">
+      <ion-list-header> </ion-list-header>
+      <ion-card *ngFor="let prueba of chat3 | filtro: busqueda">
+        <ion-card-content>
+          <ion-item lines="none">
+            <ion-text>Nombre del cliente: {{ prueba.chatid }} </ion-text>
+            <ion-chip slot="end" outline (click)='ValidateChatByTecnicoClienteForCliente(prueba.clienteid)'>
+              <ion-label>Ver Mensaje</ion-label>
+            </ion-chip>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+
+    <!--------------------------- Cliente -------------------------------------->
+    <ion-searchbar
+      (ionChange)="buscar($event)"
+      showCancelButton="focus"
+      *ngIf="userCliente === 'found'"
+    ></ion-searchbar>
+    <ion-list lines="none" *ngIf="userCliente === 'found'">
+      <ion-list-header> </ion-list-header>
+      <ion-card *ngFor="let prueba of chat4 | filtro: busqueda">
+        <ion-card-content>
+          <ion-item lines="none">
+            <ion-text>Nombre del Tecnico: {{ prueba.chatid }} </ion-text>
+            <ion-chip slot="end" outline  (click) = 'ValidateChatByTecnicoClienteForCliente(prueba.tecnicoid)'>
+              <ion-label>Ver Mensaje</ion-label>
+            </ion-chip>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </ion-content>
+</div>

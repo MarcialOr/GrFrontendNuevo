@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Tipo de subscripcion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form>
+    <ion-item class="inputs" lines="none">
+      <ion-label position="stacked">Presupuesto:</ion-label>
+      <div>
+        <ion-input
+          type="number"
+          [(ngModel)]="presupuesto"
+          [ngModelOptions]="{ standalone: true }"
+        ></ion-input>
+      </div>
+    </ion-item>
+
+    <ion-item routerLink="../../../auth/subscription" [queryParams]="{name: nameParam}">
+        {{subscrition}}
+        <ion-icon slot="end" name="arrow-dropdown-circle"></ion-icon>
+    </ion-item>
+
+    <ion-item routerLink="../../../auth/category" [queryParams]="{name: nameParam}">
+        {{category}}
+        <ion-icon slot="end" name="arrow-dropdown-circle"></ion-icon>
+    </ion-item>
+
+  </form>
+
+  <ion-content>
+    <ion-button class="Contratar" (click)="crearProveedor()">
+      Siguiente</ion-button
+    >
+  </ion-content>
+</ion-content>

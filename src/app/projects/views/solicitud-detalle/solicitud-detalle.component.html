@@ -1,0 +1,60 @@
+
+<!-- paso 6 agregar div y meter el header y el content -->
+<div class="ion-page" main> 
+  <ion-header>
+      <ion-toolbar class="toolbar">
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>Solicitud detalle</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <!-- lines="none" *ngIf="userTecnico === 'found'" -->
+    <ion-content padding lines="none" *ngIf="userTecnico === 'found'" >
+         
+        <ion-card>
+          <ion-card-content>
+            <h2><strong>Descripcion:</strong></h2>
+            <p>
+              {{historico?.descripcion}}
+            </p>
+          </ion-card-content>
+          
+          
+        </ion-card>
+
+        <ion-item class="inputs" lines="none">
+            <ion-label position="stacked">Presupuesto:</ion-label>
+              <ion-input 
+              [(ngModel)]= "precio" 
+              [ngModelOptions]="{standalone: true}"></ion-input>
+          </ion-item>
+          
+  
+    <ion-button class="Contratar"  (click)="UpdateProject()">Enviar</ion-button>
+  </ion-content>
+    
+  <!-- lines="none" *ngIf="userCliente === 'found'" -->
+    <ion-content padding lines="none" *ngIf="userCliente === 'found'">
+         
+          <ion-card>
+            <ion-card-content>
+              <h2><strong>Descripcion:</strong></h2>
+              <p>
+                {{historico?.descripcion}}
+              </p>
+            </ion-card-content>
+
+            <ion-card-content>
+                <h2><strong>Presupuesto:</strong></h2>
+                <p>
+                  Lps: {{historico?.precio}}
+                </p>
+              </ion-card-content>
+          </ion-card>
+      <ion-button class="Contratar"  (click)="AceptedProject()">Aceptar</ion-button>
+      <ion-button class="Contratar"  (click)="deniedProject()">Denegar</ion-button>
+
+    </ion-content>
+</div>

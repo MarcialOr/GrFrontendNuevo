@@ -1,0 +1,47 @@
+<!-- paso 5 ion- menu hay que agregarlo -->
+<ion-menu side="start" menuId="first">
+    <ion-header>
+      <ion-toolbar translucent>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+          <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+            <ion-icon slot="start" [name]="p.icon"></ion-icon>
+            <ion-label>
+              {{p.title}}
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <!-- paso 6 agregar div y meter el header y el content -->
+<div class="ion-page" main> 
+    <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-title>Categoría</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      
+      <ion-content padding>
+        <ion-searchbar (ionChange)= "buscar($event)" showCancelButton="focus"></ion-searchbar>
+        <ion-card color="primary" (click)="detalleCategoria(categoria.categoriaid)"
+        *ngFor="let categoria of categorias | filtro: busqueda">
+          <ion-card-content>
+            <ion-item color="primary" lines="none">
+              <ion-text>{{categoria.nombre}}</ion-text>
+              <ion-icon slot="end" name="arrow-forward"></ion-icon>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+      
+      </ion-content>      
+</div>

@@ -1,0 +1,87 @@
+<!-- paso 5 ion- menu hay que agregarlo -->
+<ion-menu side="start" menuId="first">
+    <ion-header>
+      <ion-toolbar translucent>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+          <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+            <ion-icon slot="start" [name]="p.icon"></ion-icon>
+            <ion-label>
+              {{p.title}}
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <!-- paso 6 agregar div y meter el header y el content -->
+<div class="ion-page" main> 
+    <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-back-button defaultHref="#"></ion-back-button>
+          </ion-buttons>
+          <ion-title>Técnicos</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      
+      <ion-content padding>
+        <ion-searchbar (ionChange)= "buscar($event)" showCancelButton="focus"></ion-searchbar>
+        <ion-card *ngFor="let tecnico of tecnicos | filtro: busqueda">
+          <ion-card-content>
+            <ion-item lines="none">
+              <ion-text>{{tecnico.nombre}} </ion-text>
+              <ion-chip slot="end" outline (click)="detalleTecnico(tecnico.tecnicoid)">
+                <ion-label>Mas detalle</ion-label>
+              </ion-chip>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star-half"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+            </ion-item>
+            <ion-item lines="none">
+              <p><strong>Presupuesto: </strong>L.{{tecnico.presupuesto}} /Hora</p>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-text><strong>Categoria: </strong></ion-text>
+                <ion-text class="service">{{tecnico.categoriaid}}</ion-text>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+      
+        <ion-card routerLink="/categories">
+          <ion-card-content>
+            <ion-item lines="none">
+              <ion-text>Marcial Claros</ion-text>
+              <ion-chip slot="end" outline routerLink="../technicianDetail">
+                <ion-label>Más Detalles</ion-label>
+              </ion-chip>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star-half"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+            </ion-item>
+            <ion-item lines="none">
+              <p><strong>Presupuesto: </strong>L 30.00/Hora</p>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-text><strong>Servicio: </strong></ion-text>
+              <ion-text class="service">Fontanería</ion-text>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+        
+      </ion-content>      
+</div>

@@ -1,0 +1,41 @@
+ion-content {
+    --background: #fff url('../../../../assets/img/fondo.jpg') no-repeat center center / cover;
+    position: relative;
+    text-align: center;
+    justify-items: center;
+}
+
+ion-item {
+    position: fixed;
+    bottom: 2%;
+    width: 100%;
+    --background: rgba(255, 255, 255, 0.4);
+}
+
+// ion-title {
+//     line-height: 40px;
+//     padding-left: 50px;
+//     background: url('../../../../assets/img/logo.png') no-repeat left center;
+// }
+
+.titleicon {
+    position: 30%;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    text-align:center;
+}
+
+.btnLogin {
+    width: 44%;
+    margin-left: 5%;
+    --border-radius: 15px;
+    --background: orangered;
+}
+
+.btnSignUp {
+    width: 44%;
+    margin-left: 2%;
+    --border-radius: 15px;
+    --background: orangered;
+}

@@ -1,0 +1,90 @@
+<ion-header>
+    <ion-toolbar class="toolbar">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Cree su cuenta</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <form>
+      <ion-item class="inputs" lines="none">
+        <ion-label position="stacked">Nombre Completo:</ion-label>
+        <div>
+          <ion-input type="text" [(ngModel)]="nombre"
+          [ngModelOptions]="{standalone: true}"></ion-input>
+        </div>
+      </ion-item>
+      <ion-item class="inputs" lines="none">
+        <ion-label position="stacked">Correo:</ion-label>
+        <div>
+          <ion-input type="text" [value]="correo" [(ngModel)]="correo"
+          [ngModelOptions]="{standalone: true}"></ion-input>
+        </div>
+      </ion-item>
+      <ion-item class="inputs" lines="none">
+        <ion-label position="stacked">Contraseña:</ion-label>
+        <div>
+          <ion-input [type]="passwordTypeInput" [value]="clave" [(ngModel)]="clave"
+          [ngModelOptions]="{standalone: true}"></ion-input>
+          <button item-end class="btn_eye_icon" (click)="togglePasswordMode()">
+            <ion-icon [name]="iconpassword"></ion-icon>
+          </button>
+        </div>
+      </ion-item>
+      <ion-item class="inputs" lines="none">
+        <ion-label position="stacked">Direccion:</ion-label>
+        <div>
+          <div>
+            <ion-input type="textArea" [value]="direccion" [(ngModel)]="direccion"
+            [ngModelOptions]="{standalone: true}"></ion-input>
+          </div>
+        </div>
+      </ion-item>
+  
+      <!-- <ion-item class="inputs" lines="none">
+        <ion-label position="stacked">Sobre Mi</ion-label>
+        <div>
+          <div>
+            <ion-input type="textArea" [value]="sobreMi" [(ngModel)]="sobreMi"
+            [ngModelOptions]="{standalone: true}"></ion-input>
+          </div>
+        </div>
+      </ion-item>
+  
+      <ion-item class="inputs" lines="none">
+        <ion-label position="stacked">Presupuesto:</ion-label>
+        <div>
+          <div>
+            <ion-input type="number" [value]="presupueto" [(ngModel)]="presupueto"
+            [ngModelOptions]="{standalone: true}"></ion-input>
+          </div>
+        </div>
+      </ion-item> -->
+      <!-- <ion-item  class="inputs" lines="none">
+        <ion-label position="stacked">Categoria</ion-label>
+        <div>
+          <ion-select
+            multiple="false"
+            cancelText="Cancelar"
+            okText="Aceptar"
+            placeholder="Seleccione"
+            [(ngModel)]="catego"
+            [ngModelOptions]="{standalone: true}"
+          >
+            <ion-select-option *ngFor="let item of categoria"> {{item.Nombre}}</ion-select-option>
+          </ion-select>
+        </div>
+      </ion-item> -->
+      <!-- <ion-item (click)="getCategory()">
+        {{category}}
+        <ion-icon slot="end" name="arrow-dropdown-circle"></ion-icon>
+      </ion-item> -->
+    </form>
+  
+    <ion-content>
+      <ion-button class="Contratar" (click)="crearCliente()"> Siguiente</ion-button>
+    </ion-content>
+  </ion-content>
+  

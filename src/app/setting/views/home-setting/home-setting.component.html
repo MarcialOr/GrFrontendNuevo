@@ -1,0 +1,70 @@
+<!-- paso 5 ion- menu hay que agregarlo -->
+<ion-menu side="start" menuId="first">
+    <ion-header>
+      <ion-toolbar translucent>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+          <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+            <ion-icon slot="start" [name]="p.icon"></ion-icon>
+            <ion-label>
+              {{p.title}}
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+<!-- paso 6 agregar div y meter el header y el content -->
+<div class="ion-page" main> 
+    <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-title>Setting</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      
+      <ion-content padding>
+        <ion-item no-padding>
+          <ion-label><strong>Notificaciones</strong></ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label>Nuevos Mensajes</ion-label>
+          <ion-checkbox color="primary" checked slot="end"></ion-checkbox>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label>Vibras</ion-label>
+          <ion-checkbox color="primary" checked slot="end"></ion-checkbox>
+        </ion-item>
+        <ion-item no-padding>
+          <ion-label><strong>Sobre Nosotros</strong></ion-label>
+        </ion-item>
+        <ion-item lines="none" routerLink="myv">
+          <ion-icon slot="start" name="help-buoy"></ion-icon>
+          <ion-label>Misión y Visión</ion-label>
+        </ion-item>
+        <ion-item no-padding>
+          <ion-label><strong>Otro</strong></ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon slot="start" name="hand"></ion-icon>
+          <ion-label>Política De Privacidad</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="clipboard"></ion-icon>
+          <ion-label>Términos y Condiciones</ion-label>
+        </ion-item>
+        <ion-item (click)="onLogout()">
+          <ion-icon color="primary" slot="start" name="log-out"></ion-icon>
+          <ion-label color="primary">Cerrar Sesión</ion-label>
+        </ion-item>
+      </ion-content>
+      
+</div>

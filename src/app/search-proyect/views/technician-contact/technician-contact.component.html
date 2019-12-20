@@ -1,0 +1,52 @@
+<!-- paso 5 ion- menu hay que agregarlo -->
+<ion-menu side="start" menuId="first">
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content> </ion-content>
+</ion-menu>
+
+<!-- paso 6 agregar div y meter el header y el content -->
+<div class="ion-page" main>
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-back-button defaultHref="" slot="start"></ion-back-button>
+      <ion-title>Chat Privado</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content padding>
+    <!-- <div class="msjCustomer" *ngFor="let item of chats">
+      {{ item.mensaje }}
+    </div> -->
+    <div *ngFor="let item of chatsCustomer">
+      <ion-item class="itemMSj" color="{{ item.color }}">
+        <ion-text slot="{{ item.slot }}">{{ item.mensaje }}</ion-text>
+      </ion-item>
+    </div>
+  </ion-content>
+
+  <ion-footer>
+    <ion-toolbar color="primary">
+      <div class="contenedorMSJ">
+        <div class="msj">
+          <ion-input
+            place-holer="Enviar un mensaje..."
+            [(ngModel)]="mensaje"
+            [ngModelOptions]="{ standalone: true }"
+          ></ion-input>
+        </div>
+        <div class="sendMsj">
+          <ion-icon
+            size="large"
+            name="send"
+            (click)="crearChatDetail('msjCustomer')"
+          ></ion-icon>
+        </div>
+      </div>
+    </ion-toolbar>
+  </ion-footer>
+</div>

@@ -1,0 +1,34 @@
+
+  <!-- paso 6 agregar div y meter el header y el content -->
+<div class="ion-page" main> 
+    <ion-header>
+        <ion-toolbar class="toolbar">
+          <ion-buttons slot="start">
+            <ion-back-button defaultHref=""></ion-back-button>
+          </ion-buttons>
+          <ion-title>Evaluar tecnico</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      
+      <ion-content padding>
+        <ion-item class="inputs" lines="none">
+          <ion-label position="stacked">Comentario:</ion-label>
+          <div>
+            <textarea rows="6" ></textarea>
+          </div>
+        </ion-item>
+      
+        <ion-item>
+            <ion-label>Puntaje:</ion-label>
+            <ion-select multiple="false">
+              <ion-select-option value="1" selected>1</ion-select-option>
+              <ion-select-option value="2">2</ion-select-option>
+              <ion-select-option value="3" >3</ion-select-option>
+              <ion-select-option value="4">4</ion-select-option>
+              <ion-select-option value="5">5</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+        <ion-button class="Contratar" >Enviar</ion-button>
+      </ion-content>
+</div>

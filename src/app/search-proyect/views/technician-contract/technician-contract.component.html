@@ -1,0 +1,45 @@
+<!-- paso 5 ion- menu hay que agregarlo -->
+<ion-menu side="start" menuId="first">
+    <ion-header>
+      <ion-toolbar translucent>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+          <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+            <ion-icon slot="start" [name]="p.icon"></ion-icon>
+            <ion-label>
+              {{p.title}}
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>  
+
+  <!-- paso 6 agregar div y meter el header y el content -->
+<div class="ion-page" main> 
+    <ion-header>
+        <ion-toolbar class="toolbar">
+          <ion-buttons slot="start">
+            <ion-back-button defaultHref=""></ion-back-button>
+          </ion-buttons>
+          <ion-title>Contratar Tecnico</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      
+      <ion-content padding>
+        <ion-item class="inputs" lines="none">
+          <ion-label position="stacked">Descripcion:</ion-label>
+          <div>
+            <textarea rows="6" [(ngModel)]= "descripcion" 
+            [ngModelOptions]="{standalone: true}"></textarea>
+          </div>
+        </ion-item>
+      
+        <ion-button class="Contratar" (click) = "enviarAlTecnico()">Enviar</ion-button>
+      </ion-content>
+</div>

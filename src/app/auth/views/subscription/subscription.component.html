@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>
+        <ion-item lines="none">
+          Subscripcion
+          <ion-icon
+            slot="end" [routerLink]="['../../auth/jobWorker', nameParam]" name="close-circle"
+          ></ion-icon>
+        </ion-item>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <div *ngFor="let usuario of usuarios; let i = index">
+      <ion-item>
+        <ion-label>
+          <h4>Suscripcion: {{usuario.suscripcion}}</h4>
+          <h5>Precio: {{usuario.precio}}</h5>
+          <p>Duracion: {{usuario.duracion}} dias</p>
+        </ion-label>
+        <ion-chip slot="end" outline (click)="setSubscription(i)">
+          Seleccionar
+        </ion-chip>
+      </ion-item>
+    </div>
+  </ion-content>
+  

@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Tenico</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form>
+    <ion-item class="inputs" lines="none">
+      <ion-label position="stacked">Telefono:</ion-label>
+      <div>
+        <ion-input type="text"></ion-input>
+      </div>
+    </ion-item>
+    <ion-item class="inputs" lines="none">
+      <ion-label position="stacked">Direccion:</ion-label>
+      <div>
+        <ion-input type="text"></ion-input>
+      </div>
+    </ion-item>
+    <ion-item class="inputs" lines="none">
+      <ion-label position="stacked">Tipos de servicios que brinda:</ion-label>
+      <div>
+        <ion-select
+          multiple="false"
+          cancelText="Nah"
+          okText="Okay!"
+          placeholder="Seleccione"
+        >
+          <ion-select-option value="1"> Gratis</ion-select-option>
+          <ion-select-option value="2"> Clasica</ion-select-option>
+          <ion-select-option value="3"> Gratis</ion-select-option>
+        </ion-select>
+      </div>
+    </ion-item>
+    <ion-item class="inputs" lines="none">
+      <ion-label position="stacked"
+        >Categoria que pretenecen sus servicios:</ion-label
+      >
+      <div>
+        <ion-select
+          multiple="true"
+          cancelText="Nah"
+          okText="Okay!"
+          placeholder="Seleccione"
+        >
+          <ion-select-option value="1"> Gratis</ion-select-option>
+          <ion-select-option value="2"> Clasica</ion-select-option>
+          <ion-select-option value="3"> Gratis</ion-select-option>
+        </ion-select>
+      </div>
+    </ion-item>
+  </form>
+
+  <ion-content padding>
+    
+    <ion-button class="register">Siguiente</ion-button>
+    
+  </ion-content>
+</ion-content>
